@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 DBUS_DEST=org.mpris.MediaPlayer2
 DBUS_OBJ_PATH=/org/mpris/MediaPlayer2
@@ -10,9 +10,9 @@ if [[ $# -ne 1 ]]; then
 fi
 
 if [[ "$1" == "playpause" ]]; then
-  dbus-send --print-reply --dest=$DBUS_DEST.$PLAYER $DBUS_OBJ_PATH $DBUS_DEST.Player.PlayPause
+  dbus-send --type=method_call --dest=$DBUS_DEST.$PLAYER $DBUS_OBJ_PATH $DBUS_DEST.Player.PlayPause
 elif [[ "$1" == "next" ]]; then
-  dbus-send --print-reply --dest=$DBUS_DEST.$PLAYER $DBUS_OBJ_PATH $DBUS_DEST.Player.Next
+  dbus-send --type=method_call --dest=$DBUS_DEST.$PLAYER $DBUS_OBJ_PATH $DBUS_DEST.Player.Next
 elif [[ "$1" == "previous" ]]; then
-  dbus-send --print-reply --dest=$DBUS_DEST.$PLAYER $DBUS_OBJ_PATH $DBUS_DEST.Player.Previous
+  dbus-send --type=method_call --dest=$DBUS_DEST.$PLAYER $DBUS_OBJ_PATH $DBUS_DEST.Player.Previous
 fi
