@@ -8,6 +8,8 @@ CURRENT_PROFILE=$(pacmd list-cards | grep "active profile" | tail -n 1 | awk '{s
 
 if [[ "$CURRENT_PROFILE" == "$PROFILE_MONITOR" ]]; then
   pacmd set-card-profile $CARD_ID $PROFILE_HEADSET
+  notify-send "PulseAudio Profile" "Switched to Headphones" -i /usr/share/pixmaps/pasystray.png
 else
   pacmd set-card-profile $CARD_ID $PROFILE_MONITOR
+  notify-send "PulseAudio Profile" "Switched to Speakers" -i /usr/share/pixmaps/pasystray.png
 fi
